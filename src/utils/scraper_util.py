@@ -77,11 +77,11 @@ def transcript_by_minute(transcript):
     return transcript_by_minute
 
 def get_minutewise_df(df):
-    pandarallel.initialize(progress_bar=True)
     df = df.dropna(subset=['transcript'])
-    df['transcript_by_minute'] = df['transcript'].parallel_apply(transcript_by_minute)
+    transcripts = df['transcript'].apply(transcript_by_minute)
+    df = df.assign(transcript_by_minute = transcripts)
     temp_df = pd.DataFrame([*df['transcript_by_minute']], df.index).stack()\
       .rename_axis([None,'minute']).reset_index(1, name='transcript')
-    new_df = pd.concat([temp_df, df.drop(columns=['transcript', 'transcript_by_minute'])], join='outer', axis=1)
+    new_df = df.drop(columns=['transcript', 'transcript_by_minute']).join(temp_df)
     new_df = new_df[['medium', 'id', 'title', 'description', 'duration', 'date', 'category', 'minute', 'transcript']]
     return new_df
