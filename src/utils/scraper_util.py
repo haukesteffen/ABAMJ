@@ -38,7 +38,10 @@ def fetch_video_transcript(video_id):
         return np.nan
 
 def fetch_video_info(video_id):
-    info = Video.getInfo(video_id)
+    try:
+        info = Video.getInfo(video_id)
+    except:
+        return [np.nan, np.nan, np.nan, np.nan, np.nan]
     return [info["title"], info["duration"]["secondsText"], info["publishDate"], info["description"], info["category"]]
 
 def get_raw_df(channel_id):
@@ -74,6 +77,7 @@ def transcript_by_minute(transcript):
     return transcript_by_minute
 
 def get_minutewise_df(df):
+    pandarallel.initialize(progress_bar=True)
     df = df.dropna(subset=['transcript'])
     df['transcript_by_minute'] = df['transcript'].parallel_apply(transcript_by_minute)
     temp_df = pd.DataFrame([*df['transcript_by_minute']], df.index).stack()\
