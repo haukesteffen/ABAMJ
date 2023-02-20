@@ -3,6 +3,7 @@
 from utils.mention_util import party_search_terms, politician_search_terms, extract_mentions
 from tqdm import tqdm
 import pandas as pd
+from pandarallel import pandarallel
 
 
 
@@ -11,18 +12,21 @@ def main():
   df = pd.read_pickle('data/minutewise.pkl')
   df.dropna(inplace=True)
 
+  # Initialize pandarallel
+  pandarallel.initialize(progress_bar=True)
+
   # Extract party mentions from raw data
-  rows = extract_mentions(df, party_search_terms)
+  party_dict = df.parallel_apply(extract_mentions, search_terms=party_search_terms, axis=1)
 
   # Create and export the new DataFrame from the list of rows
-  party_df = pd.DataFrame(rows, columns=['medium', 'id', 'title', 'minute', 'date', 'search_term', 'extracted_string'])
+  party_df = pd.DataFrame(party_dict.dropna().explode().to_list())
   party_df.to_pickle('data/party_mentions.pkl')
 
   # Extract politician mentions from raw data
-  rows = extract_mentions(df, politician_search_terms)
+  politician_dict = df.parallel_apply(extract_mentions, search_terms=politician_search_terms, axis=1)
 
   # Create and export the new DataFrame from the list of rows
-  politician_df = pd.DataFrame(rows, columns=['medium', 'id', 'title', 'minute', 'date', 'search_term', 'extracted_string'])
+  politician_df = pd.DataFrame(politician_dict.dropna().explode().to_list())
   politician_df.to_pickle('data/politician_mentions.pkl')
 
 
