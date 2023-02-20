@@ -68,7 +68,8 @@ def extract_mentions(row, search_terms):
                       'minute': minute, 
                       'date': date, 
                       'search_term': term, 
-                      'extracted_string': extracted_string})
+                      'extracted_string': extracted_string,
+                      'party': search_terms[term]})
 
   if not rows:
     return
