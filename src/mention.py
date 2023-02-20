@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from utils.mention_util import search_terms, find_search_term
+from utils.mention_util import party_search_terms, find_search_term
 from tqdm import tqdm
 import pandas as pd
 
@@ -25,7 +25,7 @@ def main():
 
 
     # For each search term, extract the relevant strings and add a row to the new DataFrame for each occurrence
-    for term in search_terms.keys():
+    for term in party_search_terms.keys():
       extracted_strings = find_search_term(transcript, term)
       if extracted_strings:
         for extracted_string in extracted_strings:

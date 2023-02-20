@@ -1,6 +1,6 @@
 import re
 
-search_terms = {'die linke':'linke',
+party_search_terms = {'die linke':'linke',
                 'linkspartei':'linke',
                 'die grünen':'grüne',
                 'spd':'spd',
