@@ -1,4 +1,5 @@
 import re
+import pandas as pd
 
 party_search_terms = {'die linke':'linke',
                 'linkspartei':'linke',
@@ -12,6 +13,9 @@ party_search_terms = {'die linke':'linke',
                 'afd':'afd', 
                 'afg':'afd',
                 }
+
+politician_df = pd.read_pickle('assets/bundestag.pkl')
+politician_search_terms = politician_df.set_index('politician').to_dict()['party']
 
 def find_search_term(transcript, search_term):
   # Use a regular expression to find all occurrences of the search term in the transcript
