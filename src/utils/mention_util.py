@@ -1,6 +1,8 @@
 import re
+import pandas as pd
+from tqdm import tqdm
 
-search_terms = {'die linke':'linke',
+party_search_terms = {'die linke':'linke',
                 'linkspartei':'linke',
                 'die grünen':'grüne',
                 'spd':'spd',
@@ -12,6 +14,9 @@ search_terms = {'die linke':'linke',
                 'afd':'afd', 
                 'afg':'afd',
                 }
+
+politician_df = pd.read_pickle('assets/bundestag.pkl')
+politician_search_terms = politician_df.set_index('politician').to_dict()['party']
 
 def find_search_term(transcript, search_term):
   # Use a regular expression to find all occurrences of the search term in the transcript
@@ -39,3 +44,33 @@ def find_search_term(transcript, search_term):
   return extracted_strings
 
 
+def extract_mentions(row, search_terms):
+    # Create an empty list to store the rows of the new DataFrame
+  rows = []
+
+# Iterate over the rows of the original DataFrame
+  medium = row['medium']
+  id = row['id']
+  title = row['title']
+  minute = row['minute']
+  transcript = row['transcript']
+  date = row['date']
+
+
+  # For each search term, extract the relevant strings and add a row to the new DataFrame for each occurrence
+  for term in search_terms.keys():
+    extracted_strings = find_search_term(transcript, term)
+    if extracted_strings:
+      for extracted_string in extracted_strings:
+        rows.append({'medium': medium,
+                      'id': id, 
+                      'title': title, 
+                      'minute': minute, 
+                      'date': date, 
+                      'search_term': term, 
+                      'extracted_string': extracted_string,
+                      'party': search_terms[term]})
+
+  if not rows:
+    return
+  return rows
