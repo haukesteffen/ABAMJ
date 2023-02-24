@@ -9,8 +9,11 @@ from pandarallel import pandarallel
 
 def main():
   # Import raw data
-  df = pd.read_pickle('data/minutewise.pkl')
-  df.dropna(inplace=True)
+  df = pd.concat([
+    pd.read_pickle('data/minutewise.pkl').dropna(),
+    pd.read_pickle('data/mediathek_data.pkl')
+  ], axis = 0
+  )
 
   # Initialize pandarallel
   pandarallel.initialize(progress_bar=True)
