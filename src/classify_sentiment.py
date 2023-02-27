@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from utils.sentiment_util import extract_sentiment_df
+from utils.classify_sentiment_util import extract_sentiment_df
 import pandas as pd
 
 
