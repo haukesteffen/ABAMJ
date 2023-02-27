@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from utils.mention_util import party_search_terms, politician_search_terms, extract_mentions
+from utils.extract_mentions_util import party_search_terms, politician_search_terms, extract_mentions
 from tqdm import tqdm
 import pandas as pd
 from pandarallel import pandarallel
