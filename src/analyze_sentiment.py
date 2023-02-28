@@ -8,7 +8,7 @@ import pandas as pd
 def main():
   # Import sentiment and mentions data
   party_sentiment_df = pd.read_pickle('data/party_sentiment_classifications.pkl')
-  party_mentions_df = pd.read_pickle('results/dataframes/party_pivot_df.pkl')
+  party_mentions_df = pd.read_pickle('results/dataframes/mentions/party_pivot_df.pkl')
 
   # Split sentiment dataframes by positive, neutral and negative sentiments
   party_positive_classifications = party_sentiment_df[party_sentiment_df['positive']]
