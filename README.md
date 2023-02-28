@@ -9,6 +9,7 @@ ABAMJ
 ├──📂 assets
 │   └── bundestag.pkl
 ├──📂 data
+│   ├── mediathek_data.pkl
 │   └── ...
 ├──📂 results
 │   ├── 📂 dataframes
