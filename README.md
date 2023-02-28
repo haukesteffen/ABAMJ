@@ -4,6 +4,42 @@ This repository contains code for exploring automatic bias analysis in multimedi
 
 For details, please have a look at our paper Towards Automatic Bias Analysis in Multimedia Journalism (TODO). Citation information can be found at the bottom of this page.
 
+```
+ABAMJ
+├──📂 assets
+│   └── bundestag.pkl
+├──📂 data
+│   └── ...
+├──📂 results
+│   ├── 📂 dataframes
+│   │    ├── 📂 mentions
+│   │    │    └── ...
+│   │    └── 📂 sentiment
+│   │         └── ...
+│   └── 📂 sentiment
+│        ├── 📂 mentions
+│        │    └── ...
+│        └── 📂 sentiment
+│             └── ...
+├── LICENSE
+├── .gitignore
+├── README.md
+├── setup.sh
+└──📂 src
+    ├── 📂 utils
+    │    ├── __init__.py
+    │    ├── scraper_util.py
+    │    ├── extract_mentions_util.py
+    │    ├── classify_sentiment_util.py
+    │    ├── analyze_mentions_util.py
+    │    └── analyze_sentiment_util.py
+    ├── scraper.py
+    ├── extract_mentions.py
+    ├── classify_sentiment.py
+    ├── analyze_mentions.py
+    └── analyze_sentiment.py
+```
+
 ## Installation
 
 TODO
