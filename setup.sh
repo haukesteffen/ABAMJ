@@ -1,3 +1,5 @@
+#!/bin/sh
+
 pip install numpy
 pip install pandas
 pip install pandarallel
@@ -9,4 +11,4 @@ conda install pytorch -c pytorch
 pip install matplotlib
 pip install seaborn
 
-OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES python3 src/scraper.py
+#OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES python3 src/scraper.py
