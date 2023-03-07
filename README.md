@@ -42,8 +42,10 @@ ABAMJ
 ```
 
 ## Setup
-Make sure conda is installed on your system
+Make sure conda is installed on your system.
 ```shell
+git clone git@github.com:haukesteffen/ABAMJ.git
+cd ABAMJ
 conda env create -f env_abamj.yml
 conda activate ABAMJ
 ```
