@@ -52,7 +52,9 @@ conda env create -f env_abamj.yml
 conda activate ABAMJ
 ```
 
-## Scraper
+## Pipeline
+
+### 1. Scraper
 ```shell
 python3 src/scraper.py
 ```
@@ -61,26 +63,26 @@ You may need to disable fork safety:
 ```shell
 OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES python3 src/scraper.py
 ```
-## Mention Extraction
+### 2. Mention Extraction
 ```shell
 python3 src/extract_mentions.py
 ```
 
-## Sentiment Classification
+### 3. Sentiment Classification
 ```shell
 python3 src/classify_sentiment.py
 ```
 
-## Mention Analysis
+### 4. Mention Analysis
 ```shell
 python3 src/analyze_mentions.py
 ```
 
-## Sentiment Analysis 
+### 5. Sentiment Analysis 
 ```shell
 python3 src/analyze_sentiment.py
 ```
 
-### Citation
+## Citation
 
 TODO
