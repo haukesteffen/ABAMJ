@@ -41,30 +41,48 @@ ABAMJ
     └── analyze_sentiment.py
 ```
 
-## Installation
+## Setup
+Make sure conda is installed on your system:
+https://docs.conda.io/
 
-TODO
+```shell
+git clone git@github.com:haukesteffen/ABAMJ.git
+cd ABAMJ
+conda env create -f env_abamj.yml
+conda activate ABAMJ
+```
 
-## Scraper
+## Pipeline
 
-TODO
+### 1. Scraper
+```shell
+python3 src/scraper.py
+```
 
-## Mention Extraction
+You may need to disable fork safety:
+```shell
+OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES python3 src/scraper.py
+```
+### 2. Mention Extraction
+```shell
+python3 src/extract_mentions.py
+```
 
-TODO
+### 3. Sentiment Classification
+```shell
+python3 src/classify_sentiment.py
+```
 
-## Sentiment Classification
+### 4. Mention Analysis
+```shell
+python3 src/analyze_mentions.py
+```
 
-TODO
+### 5. Sentiment Analysis 
+```shell
+python3 src/analyze_sentiment.py
+```
 
-## Mention Analysis
-
-TODO
-
-## Sentiment Analysis 
-
-TODO
-
-### Citation
+## Citation
 
 TODO
