@@ -1,4 +1,4 @@
-name: abamj
+name: ABAMJ
 channels:
   - pytorch
   - conda-forge
