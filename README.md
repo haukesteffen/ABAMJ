@@ -42,31 +42,40 @@ ABAMJ
 ```
 
 ## Setup
-
+Make sure conda is installed on your system
 ```shell
 conda env create -f env_abamj.yml
 conda activate ABAMJ
 ```
 
 ## Scraper
+```shell
+python3 src/scraper.py
+```
 
-TODO
-
+You may need to disable fork safety:
+```shell
+OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES python3 src/scraper.py
+```
 ## Mention Extraction
-
-TODO
+```shell
+python3 src/extract_mentions.py
+```
 
 ## Sentiment Classification
-
-TODO
+```shell
+python3 src/classify_sentiment.py
+```
 
 ## Mention Analysis
-
-TODO
+```shell
+python3 src/analyze_mentions.py
+```
 
 ## Sentiment Analysis 
-
-TODO
+```shell
+python3 src/analyze_sentiment.py
+```
 
 ### Citation
 
