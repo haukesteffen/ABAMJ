@@ -42,7 +42,9 @@ ABAMJ
 ```
 
 ## Setup
-Make sure conda is installed on your system.
+Make sure conda is installed on your system:
+https://docs.conda.io/
+
 ```shell
 git clone git@github.com:haukesteffen/ABAMJ.git
 cd ABAMJ
