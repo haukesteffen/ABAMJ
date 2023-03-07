@@ -41,9 +41,12 @@ ABAMJ
     └── analyze_sentiment.py
 ```
 
-## Installation
+## Setup
 
-TODO
+```shell
+conda env create -f env_abamj.yml
+conda activate ABAMJ
+```
 
 ## Scraper
 
