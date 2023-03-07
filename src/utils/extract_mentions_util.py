@@ -1,22 +1,23 @@
 import re
 import pandas as pd
-from tqdm import tqdm
 
-party_search_terms = {'die linke':'linke',
-                'linkspartei':'linke',
-                'die grünen':'grüne',
-                'spd':'spd',
-                'freien demokraten':'fdp',
-                'fdp':'fdp',
-                'cdu':'cdu',
-                'csu':'csu',
-                'alternative für deutschland':'afd',
-                'afd':'afd', 
-                'afg':'afd',
-                }
+party_search_terms = {
+  'die linke': 'linke',
+  'linkspartei': 'linke',
+  'die grünen': 'grüne',
+  'spd': 'spd',
+  'freien demokraten': 'fdp',
+  'fdp': 'fdp',
+  'cdu': 'cdu',
+  'csu': 'csu',
+  'alternative für deutschland': 'afd',
+  'afd': 'afd', 
+  'afg': 'afd'}
+
 
 politician_df = pd.read_pickle('assets/bundestag.pkl')
 politician_search_terms = politician_df.set_index('politician').to_dict()['party']
+
 
 def find_search_term(transcript, search_term):
   # Use a regular expression to find all occurrences of the search term in the transcript
@@ -62,14 +63,15 @@ def extract_mentions(row, search_terms):
     extracted_strings = find_search_term(transcript, term)
     if extracted_strings:
       for extracted_string in extracted_strings:
-        rows.append({'medium': medium,
-                      'id': id, 
-                      'title': title, 
-                      'minute': minute, 
-                      'date': date, 
-                      'search_term': term, 
-                      'extracted_string': extracted_string,
-                      'party': search_terms[term]})
+        rows.append(
+          {'medium': medium,
+          'id': id, 
+          'title': title, 
+          'minute': minute, 
+          'date': date, 
+          'search_term': term, 
+          'extracted_string': extracted_string,
+          'party': search_terms[term]})
 
   if not rows:
     return

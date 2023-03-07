@@ -6,6 +6,7 @@ from pandarallel import pandarallel
 from tqdm import tqdm
 tqdm.pandas()
 
+
 channels = {
     'junge Welt': 'UC_wVoja0mx0IFOP8s1nfRSg',
     'ZEIT ONLINE': 'UC_YnP7DDnKzkkVl3BaHiZoQ',
@@ -29,20 +30,33 @@ channels = {
     'DER SPIEGEL': 'UC1w6pNGiiLdZgyNpXUnA4Zw',
     'ZDFheute Nachrichten': 'UCeqKIgPQfNInOswGRWt48kQ',
     'BILD': 'UC4zcMHyrT_xyWlgy5WGpFFQ',
-    'Junge Freiheit': 'UCXJBRgiZRZvfilIGQ4wN5CQ',
-}
+    'Junge Freiheit': 'UCXJBRgiZRZvfilIGQ4wN5CQ'}
+
+
 def fetch_video_transcript(video_id):
     try:
         return YouTubeTranscriptApi.get_transcript(video_id=video_id, languages=["de"])
     except:
         return np.nan
 
+
 def fetch_video_info(video_id):
     try:
         info = Video.getInfo(video_id)
     except:
-        return [np.nan, np.nan, np.nan, np.nan, np.nan]
-    return [info["title"], info["duration"]["secondsText"], info["publishDate"], info["description"], info["category"]]
+        return [
+            np.nan, 
+            np.nan, 
+            np.nan, 
+            np.nan, 
+            np.nan]
+    return [
+        info["title"], 
+        info["duration"]["secondsText"], 
+        info["publishDate"], 
+        info["description"], 
+        info["category"]]
+
 
 def get_raw_df(channel_id):
     pandarallel.initialize(progress_bar=True)
@@ -66,6 +80,7 @@ def get_raw_df(channel_id):
     df.loc[:, ["title","duration","date","description","category"]] = df['id'].parallel_apply(fetch_video_info).to_list()
     return df
 
+
 def transcript_by_minute(transcript):
     transcript_by_minute = {}
     for segment in transcript:
@@ -76,6 +91,7 @@ def transcript_by_minute(transcript):
         transcript_by_minute[segment['minute']] += (segment['text'] + ' ')
     return transcript_by_minute
 
+
 def get_minutewise_df(df):
     df = df.dropna(subset=['transcript'])
     transcripts = df['transcript'].apply(transcript_by_minute)
@@ -83,5 +99,13 @@ def get_minutewise_df(df):
     temp_df = pd.DataFrame([*df['transcript_by_minute']], df.index).stack()\
       .rename_axis([None,'minute']).reset_index(1, name='transcript')
     new_df = df.drop(columns=['transcript', 'transcript_by_minute']).join(temp_df)
-    new_df = new_df[['medium', 'id', 'title', 'description', 'duration', 'date', 'category', 'minute', 'transcript']]
+    new_df = new_df[['medium',
+                     'id', 
+                     'title', 
+                     'description', 
+                     'duration', 
+                     'date', 
+                     'category', 
+                     'minute', 
+                     'transcript']]
     return new_df

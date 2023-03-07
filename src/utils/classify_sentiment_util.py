@@ -3,9 +3,11 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipe
 from tqdm import tqdm
 tqdm.pandas()
 
+
 tokenizer = AutoTokenizer.from_pretrained("mdraw/german-news-sentiment-bert")
 model = AutoModelForSequenceClassification.from_pretrained("mdraw/german-news-sentiment-bert")
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+
 
 def extract_sentiment_df(input_df):
     input_df['sentiment'] = input_df['extracted_string'].progress_apply(classifier)

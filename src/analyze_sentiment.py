@@ -4,7 +4,6 @@ from utils.analyze_sentiment_util import analyze_sentiment, saveplot
 import pandas as pd
 
 
-
 def main():
   # Import sentiment and mentions data
   party_sentiment_df = pd.read_pickle('data/party_sentiment_classifications.pkl')
@@ -34,15 +33,26 @@ def main():
   party_negative_zeromean.to_pickle('results/dataframes/sentiment/party_negative_zeromean.pkl')
 
   # Save plots
-  saveplot(party_positive_standardized, 'Positive Party Mentions', 'results/plots/sentiment/party_positive_standardized.pdf')
-  saveplot(party_positive_zeromean, 'Positive Party Mentions (zero mean)', 'results/plots/sentiment/party_positive_zeromean.pdf')
+  saveplot(party_positive_standardized, 
+           'Positive Party Mentions', 
+           'results/plots/sentiment/party_positive_standardized.pdf')
+  saveplot(party_positive_zeromean, 
+           'Positive Party Mentions (zero mean)', 
+           'results/plots/sentiment/party_positive_zeromean.pdf')
 
-  saveplot(party_neutral_standardized, 'Neutral Party Mentions', 'results/plots/sentiment/party_neutral_standardized.pdf')
-  saveplot(party_neutral_zeromean, 'Neutral Party Mentions (zero mean)', 'results/plots/sentiment/party_neutral_zeromean.pdf')
+  saveplot(party_neutral_standardized, 
+           'Neutral Party Mentions', 
+           'results/plots/sentiment/party_neutral_standardized.pdf')
+  saveplot(party_neutral_zeromean, 
+           'Neutral Party Mentions (zero mean)', 
+           'results/plots/sentiment/party_neutral_zeromean.pdf')
   
-  saveplot(party_negative_standardized, 'Negative Party Mentions', 'results/plots/sentiment/party_negative_standardized.pdf')
-  saveplot(party_negative_zeromean, 'Negative Party Mentions (zero mean)', 'results/plots/sentiment/party_negative_zeromean.pdf')
-
+  saveplot(party_negative_standardized, 
+           'Negative Party Mentions', 
+           'results/plots/sentiment/party_negative_standardized.pdf')
+  saveplot(party_negative_zeromean, 
+           'Negative Party Mentions (zero mean)', 
+           'results/plots/sentiment/party_negative_zeromean.pdf')
 
 
 if __name__ == "__main__":
