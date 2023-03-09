@@ -25,7 +25,6 @@ ABAMJ
 ├── LICENSE
 ├── .gitignore
 ├── README.md
-├── setup.sh
 └──📂 src
     ├── 📂 utils
     │    ├── __init__.py
@@ -52,7 +51,7 @@ conda env create -f env_abamj.yml
 conda activate ABAMJ
 ```
 
-## Pipeline
+## Usage
 
 ### 1. Scraper
 ```shell
