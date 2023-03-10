@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from src.utils.scraper_util import channels, get_raw_df, get_minutewise_df
+from src.utils.scrape_util import channels, get_raw_df, get_minutewise_df
 import pandas as pd
 
 
