@@ -34,7 +34,7 @@ def main():
     if args.scrape:
         scrape()
 
-    if args.extract_mentions:
+    if args.extract:
         if os.path.isfile('data/minutewise.pkl'):
             extract_mentions()
         else:
