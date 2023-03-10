@@ -25,6 +25,7 @@ ABAMJ
 ├── LICENSE
 ├── .gitignore
 ├── README.md
+├── abamj.py
 └──📂 src
     ├── 📂 utils
     │    ├── __init__.py
@@ -33,6 +34,7 @@ ABAMJ
     │    ├── classify_sentiment_util.py
     │    ├── analyze_mentions_util.py
     │    └── analyze_sentiment_util.py
+    ├── __init__.py
     ├── scraper.py
     ├── extract_mentions.py
     ├── classify_sentiment.py
@@ -55,31 +57,26 @@ conda activate ABAMJ
 
 ### 1. Scraper
 ```shell
-python3 src/scraper.py
+python3 abamj.py --scrape
 ```
 
 You may need to disable fork safety:
 ```shell
-OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES python3 src/scraper.py
+OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES python3 abamj.py --scrape
 ```
 ### 2. Mention Extraction
 ```shell
-python3 src/extract_mentions.py
+python3 abamj.py --extract
 ```
 
 ### 3. Sentiment Classification
 ```shell
-python3 src/classify_sentiment.py
+python3 abamj.py --classify
 ```
 
-### 4. Mention Analysis
+### 4. Mention Analysis & Sentiment Analysis
 ```shell
-python3 src/analyze_mentions.py
-```
-
-### 5. Sentiment Analysis 
-```shell
-python3 src/analyze_sentiment.py
+python3 abamj.py --analyze
 ```
 
 ## Citation
