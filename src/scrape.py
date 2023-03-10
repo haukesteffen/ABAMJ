@@ -8,8 +8,8 @@ from pandarallel import pandarallel
 def scrape():
     pandarallel.initialize(progress_bar=True)
     data_df = pd.DataFrame()
-    for _, id in channels.items():
-        raw_df = get_raw_df(id)
+    for channel, id in channels.items():
+        raw_df = get_raw_df(channel, id)
         data_df = pd.concat([data_df, raw_df], axis=0)
     data_df.reset_index(inplace=True)
     data_df.to_pickle('data/data.pkl')

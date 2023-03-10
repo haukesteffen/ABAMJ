@@ -57,7 +57,7 @@ def fetch_video_info(video_id):
         info["category"]]
 
 
-def get_raw_df(channel_id):
+def get_raw_df(channel_name, channel_id):
     df = pd.DataFrame(columns=["medium",
                                 "title",
                                 "id",
@@ -66,15 +66,15 @@ def get_raw_df(channel_id):
                                 "date",
                                 "description",
                                 "category"])
-    print('fetching videos...')
     channel = Channel.get(channel_id)
     playlist = Playlist(playlist_from_channel_id(channel["id"]))
     while playlist.hasMoreVideos:
         playlist.getNextVideos()
-    print('fetching metadata and transcripts...')
-    df['id'] = [video.get("id") for video in tqdm(playlist.videos)]
+    df['id'] = [video.get("id") for video in playlist.videos]
+    print(f'\n\nScraping subtitles of channel: {channel_name}...\n')
     df['transcript'] = df['id'].parallel_apply(fetch_video_transcript)
     df['medium'] = channel.get("title")
+    print(f'\n\nScraping video metadata of channel: {channel_name}...\n')
     df.loc[:, ["title","duration","date","description","category"]] = df['id'].parallel_apply(fetch_video_info).to_list()
     return df
 
@@ -91,6 +91,7 @@ def transcript_by_minute(transcript):
 
 
 def get_minutewise_df(df):
+    print('\n\nSplitting subtitle data into minutewise chunks...\n')
     df = df.dropna(subset=['transcript'])
     transcripts = df['transcript'].apply(transcript_by_minute)
     df = df.assign(transcript_by_minute = transcripts)
