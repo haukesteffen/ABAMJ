@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from utils.classify_sentiment_util import extract_sentiment_df
+from src.utils.classify_sentiment_util import extract_sentiment_df
 import pandas as pd
 
 
-def main():
+def classify_sentiment():
   party_df = pd.read_pickle('data/party_mentions.pkl')
   politician_df = pd.read_pickle('data/politician_mentions.pkl')
 
@@ -16,4 +16,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    classify_sentiment()

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-from utils.extract_mentions_util import party_search_terms, politician_search_terms, extract_mentions
+from src.utils.extract_mentions_util import party_search_terms, politician_search_terms, extract_mentions
 import pandas as pd
 from pandarallel import pandarallel
 
 
-def main():
+def extract_mentions():
   # Import raw data
   df = pd.concat([
     pd.read_pickle('data/minutewise.pkl').dropna(),
@@ -37,4 +37,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    extract_mentions()

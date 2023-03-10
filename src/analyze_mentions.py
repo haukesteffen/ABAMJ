@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from utils.analyze_mentions_util import analyze_mentions, saveplot
+from src.utils.analyze_mentions_util import analyze_mentions, saveplot
 import pandas as pd
 
 
-def main():
+def analyze_mentions():
   # Import raw data
   party_df = pd.read_pickle('data/party_mentions.pkl')
   politician_df = pd.read_pickle('data/politician_mentions.pkl')
@@ -37,4 +37,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    analyze_mentions()

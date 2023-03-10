@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from utils.scraper_util import channels, get_raw_df, get_minutewise_df
+from src.utils.scraper_util import channels, get_raw_df, get_minutewise_df
 import pandas as pd
 
 
-def main():
+def scrape():
     data_df = pd.DataFrame()
     for _, id in channels.items():
         raw_df = get_raw_df(id)
@@ -17,4 +17,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    scrape()

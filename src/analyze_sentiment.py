@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from utils.analyze_sentiment_util import analyze_sentiment, saveplot
+from src.utils.analyze_sentiment_util import analyze_sentiment, saveplot
 import pandas as pd
 
 
-def main():
+def analyze_sentiment():
   # Import sentiment and mentions data
   party_sentiment_df = pd.read_pickle('data/party_sentiment_classifications.pkl')
   party_mentions_df = pd.read_pickle('results/dataframes/mentions/party_pivot_df.pkl')
@@ -56,4 +56,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    analyze_sentiment()
