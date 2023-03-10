@@ -2,9 +2,11 @@
 
 from src.utils.scrape_util import channels, get_raw_df, get_minutewise_df
 import pandas as pd
+from pandarallel import pandarallel
 
 
 def scrape():
+    pandarallel.initialize(progress_bar=True)
     data_df = pd.DataFrame()
     for _, id in channels.items():
         raw_df = get_raw_df(id)

@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtubesearchpython import Playlist, Channel, Video, playlist_from_channel_id
-from pandarallel import pandarallel
 from tqdm import tqdm
 tqdm.pandas()
 
@@ -59,7 +58,6 @@ def fetch_video_info(video_id):
 
 
 def get_raw_df(channel_id):
-    pandarallel.initialize(progress_bar=True)
     df = pd.DataFrame(columns=["medium",
                                 "title",
                                 "id",
