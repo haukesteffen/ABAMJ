@@ -45,7 +45,7 @@ def find_search_term(transcript, search_term):
   return extracted_strings
 
 
-def extract_mentions(row, search_terms):
+def extract_search_terms(row, search_terms):
     # Create an empty list to store the rows of the new DataFrame
   rows = []
 

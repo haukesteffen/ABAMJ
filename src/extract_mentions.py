@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from src.utils.extract_mentions_util import party_search_terms, politician_search_terms, extract_mentions
+from src.utils.extract_mentions_util import party_search_terms, politician_search_terms, extract_search_terms
 import pandas as pd
 from pandarallel import pandarallel
 
@@ -18,7 +18,7 @@ def extract_mentions():
   # Extract party mentions from raw data
   print('\n\nExtracting party mentions from raw subtitle data...\n')
   party_dict = df.parallel_apply(
-     extract_mentions, 
+     extract_search_terms, 
      search_terms=party_search_terms, 
      axis=1)
 
@@ -29,7 +29,7 @@ def extract_mentions():
   # Extract politician mentions from raw data
   print('\n\nExtracting politician mentions from raw subtitle data...\n')
   politician_dict = df.parallel_apply(
-     extract_mentions, 
+     extract_search_terms, 
      search_terms=politician_search_terms, 
      axis=1)
 
