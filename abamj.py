@@ -10,6 +10,7 @@ from src.analyze_sentiment import analyze_sentiment
 
 
 def main():
+    # Parse flags
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-s",
@@ -33,22 +34,26 @@ def main():
         action="store_true")
     args = parser.parse_args()
 
+    # Scrape raw data
     if args.scrape:
         scrape()
 
+    # Extract mentions if raw dataframe is present
     if args.extract:
         if os.path.isfile('data/minutewise.pkl'):
             extract_mentions()
         else:
             raise Exception('Please scrape subtitle dataset first.')
 
+    # Classify sentiment if mentions dataframes are present
     if args.classify:
         if os.path.isfile('data/party_mentions.pkl')\
             and os.path.isfile('data/politician_mentions.pkl'):
             classify_sentiment()
         else:
             raise Exception('Please extract party and politician mentions first.')
-        
+
+    # Perform mention and sentiment analysis if sentiment dataframes are present  
     if args.analyze:
         if os.path.isfile('data/party_sentiment_classifications.pkl')\
             and os.path.isfile('data/politician_sentiment_classifications.pkl'):
