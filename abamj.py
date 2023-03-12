@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 import os
 from src.scrape import scrape
@@ -41,13 +43,15 @@ def main():
             raise Exception('Please scrape subtitle dataset first.')
 
     if args.classify:
-        if os.path.isfile('data/party_mentions.pkl') and os.path.isfile('data/politician_mentions.pkl'):
+        if os.path.isfile('data/party_mentions.pkl')\
+            and os.path.isfile('data/politician_mentions.pkl'):
             classify_sentiment()
         else:
             raise Exception('Please extract party and politician mentions first.')
         
     if args.analyze:
-        if os.path.isfile('data/party_sentiment_classifications.pkl') and os.path.isfile('data/politician_sentiment_classifications.pkl'):
+        if os.path.isfile('data/party_sentiment_classifications.pkl')\
+            and os.path.isfile('data/politician_sentiment_classifications.pkl'):
             analyze_mentions()
             analyze_sentiment()
         else:
