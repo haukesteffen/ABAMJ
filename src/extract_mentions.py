@@ -16,6 +16,7 @@ def extract_mentions():
   pandarallel.initialize(progress_bar=True)
 
   # Extract party mentions from raw data
+  print('\n\nExtracting party mentions from raw subtitle data...\n')
   party_dict = df.parallel_apply(
      extract_mentions, 
      search_terms=party_search_terms, 
@@ -26,6 +27,7 @@ def extract_mentions():
   party_df.to_pickle('data/party_mentions.pkl')
 
   # Extract politician mentions from raw data
+  print('\n\nExtracting politician mentions from raw subtitle data...\n')
   politician_dict = df.parallel_apply(
      extract_mentions, 
      search_terms=politician_search_terms, 
