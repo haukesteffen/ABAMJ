@@ -5,15 +5,18 @@ import pandas as pd
 
 
 def analyze_mentions():
-  # Import raw data
+  # Import mentions data
+  print('Importing mentions data...')
   party_df = pd.read_pickle('data/party_mentions.pkl')
   politician_df = pd.read_pickle('data/politician_mentions.pkl')
 
-  # Get pivoted dataframes and zeromean dataframes
+  # Get pivoted, standardized and zeromean dataframes
+  print('Analyzing mentions...')
   party_pivot_df, party_standardized_df, party_zeromean_df = analyze_mentions(party_df)
   politician_pivot_df, politician_standardized_df, politician_zeromean_df = analyze_mentions(politician_df)
 
   # Save pickled dataframes
+  print('Exporting dataframes...')
   party_pivot_df.to_pickle('results/dataframes/mentions/party_pivot_df.pkl')
   party_standardized_df.to_pickle('results/dataframes/mentions/party_standardized_df.pkl')
   party_zeromean_df.to_pickle('results/dataframes/mentions/party_zeromean_df.pkl')
@@ -22,6 +25,7 @@ def analyze_mentions():
   politician_zeromean_df.to_pickle('results/dataframes/mentions/politician_zeromean_df.pkl')
 
   # Save plots
+  print('Exporting plots...')
   saveplot(party_standardized_df, 
            'Party Mentions', 
            'results/plots/mentions/party_mentions.pdf')
