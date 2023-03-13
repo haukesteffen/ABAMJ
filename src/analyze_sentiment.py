@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from src.utils.analyze_sentiment_util import analyze_sentiment, saveplot
+from src.utils.analyze_sentiment_util import analyze_sentiment_df, saveplot
 import pandas as pd
 
 
@@ -17,9 +17,9 @@ def analyze_sentiment():
 
   # Get pivoted, standardized and zeromean sentiment dataframes for each sentiment
   print('Analyzing sentiment...')
-  party_positive_pivot, party_positive_standardized, party_positive_zeromean = analyze_sentiment(party_positive_classifications, party_mentions_df)
-  party_neutral_pivot, party_neutral_standardized, party_neutral_zeromean = analyze_sentiment(party_neutral_classifications, party_mentions_df)
-  party_negative_pivot, party_negative_standardized, party_negative_zeromean = analyze_sentiment(party_negative_classifications, party_mentions_df)
+  party_positive_pivot, party_positive_standardized, party_positive_zeromean = analyze_sentiment_df(party_positive_classifications, party_mentions_df)
+  party_neutral_pivot, party_neutral_standardized, party_neutral_zeromean = analyze_sentiment_df(party_neutral_classifications, party_mentions_df)
+  party_negative_pivot, party_negative_standardized, party_negative_zeromean = analyze_sentiment_df(party_negative_classifications, party_mentions_df)
 
   # Save pickled dataframes
   print('Exporting dataframes...')

@@ -26,7 +26,7 @@ parties = [
     'afd']
 
 
-def analyze_sentiment(input_df, mention_df):
+def analyze_sentiment_df(input_df, mention_df):
     pivot_df = pd.pivot_table(
         input_df, 
         index='medium', 

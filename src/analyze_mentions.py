@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from src.utils.analyze_mentions_util import analyze_mentions, saveplot
+from src.utils.analyze_mentions_util import analyze_mentions_df, saveplot
 import pandas as pd
 
 
@@ -12,8 +12,8 @@ def analyze_mentions():
 
   # Get pivoted, standardized and zeromean dataframes
   print('Analyzing mentions...')
-  party_pivot_df, party_standardized_df, party_zeromean_df = analyze_mentions(party_df)
-  politician_pivot_df, politician_standardized_df, politician_zeromean_df = analyze_mentions(politician_df)
+  party_pivot_df, party_standardized_df, party_zeromean_df = analyze_mentions_df(party_df)
+  politician_pivot_df, politician_standardized_df, politician_zeromean_df = analyze_mentions_df(politician_df)
 
   # Save pickled dataframes
   print('Exporting dataframes...')

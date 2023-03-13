@@ -42,7 +42,7 @@ btw21 = {
     'afd': 83}
 
 
-def analyze_mentions(input_df):
+def analyze_mentions_df(input_df):
     pivot_df = pd.pivot_table(
         input_df,
         index='medium', 
