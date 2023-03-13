@@ -6,7 +6,7 @@ import pandas as pd
 
 def analyze_mentions():
   # Import mentions data
-  print('Importing mentions data...')
+  print('\n\nImporting mentions data...')
   party_df = pd.read_pickle('data/party_mentions.pkl')
   politician_df = pd.read_pickle('data/politician_mentions.pkl')
 

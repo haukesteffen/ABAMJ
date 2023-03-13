@@ -71,10 +71,8 @@ def get_raw_df(channel_name, channel_id):
     while playlist.hasMoreVideos:
         playlist.getNextVideos()
     df['id'] = [video.get("id") for video in playlist.videos]
-    print(f'\n\nScraping subtitles of channel: {channel_name}...\n')
     df['transcript'] = df['id'].parallel_apply(fetch_video_transcript)
     df['medium'] = channel.get("title")
-    print(f'\n\nScraping video metadata of channel: {channel_name}...\n')
     df.loc[:, ["title","duration","date","description","category"]] = df['id'].parallel_apply(fetch_video_info).to_list()
     return df
 

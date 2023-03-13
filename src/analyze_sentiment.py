@@ -6,7 +6,7 @@ import pandas as pd
 
 def analyze_sentiment():
   # Import sentiment and mentions data
-  print('Importing mentions and sentiment data...')
+  print('\n\nImporting mentions and sentiment data...')
   party_sentiment_df = pd.read_pickle('data/party_sentiment_classifications.pkl')
   party_mentions_df = pd.read_pickle('results/dataframes/mentions/party_pivot_df.pkl')
 

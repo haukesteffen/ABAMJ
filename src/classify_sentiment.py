@@ -15,7 +15,7 @@ def classify_sentiment():
   sentiment_classified_party_df.to_pickle('data/party_sentiment_classifications.pkl')
 
   # Classify sentiment of politician mentions and save pickled dataframe
-  print('\n\nClassifying sentiment of politician mentions...')
+  print('Classifying sentiment of politician mentions...')
   sentiment_classified_politician_df = extract_sentiment_df(politician_df)
   sentiment_classified_politician_df.to_pickle('data/politician_sentiment_classifications.pkl')
 

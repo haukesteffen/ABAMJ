@@ -8,7 +8,10 @@ from pandarallel import pandarallel
 def scrape():
     pandarallel.initialize(progress_bar=True)
     data_df = pd.DataFrame()
+    i = 0
     for channel, id in channels.items():
+        i += 1
+        print(f"\n\nScraping subtitles and metadata of channel: {channel}... ({i}/{len(channels)})")
         raw_df = get_raw_df(channel, id)
         data_df = pd.concat([data_df, raw_df], axis=0)
     data_df.reset_index(inplace=True)
