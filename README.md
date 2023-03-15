@@ -43,8 +43,7 @@ ABAMJ
 ```
 
 ## Setup
-Make sure conda is installed on your system:
-https://docs.conda.io/
+Make sure [conda](https://docs.conda.io/) is installed on your system and you have ~5GB of disk space available.
 
 ```shell
 git clone https://github.com/haukesteffen/ABAMJ.git
