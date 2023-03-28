@@ -4,12 +4,12 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - numpy=1.23.5=py310hb93e574_0
-  - numpy-base=1.23.5=py310haf87e8b_0
-  - pandas=1.5.2=py310h46d7db6_0
-  - pip=22.3.1=py310hca03da5_0
-  - python=3.10.9=hc0d8a6c_0
-  - pytorch=1.13.1=py3.10_0
+  - numpy=1.23.5
+  - numpy-base=1.23.5
+  - pandas=1.5.2
+  - pip=22.3.1
+  - python=3.10.9
+  - pytorch=1.13.1
   - pip:
       - matplotlib==3.7.0
       - pandarallel==1.6.4
