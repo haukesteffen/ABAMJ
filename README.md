@@ -77,6 +77,11 @@ python3 abamj.py --classify
 ```shell
 python3 abamj.py --analyze
 ```
+## Google Scholar
+Link to the authors' Google Scholar profiles:
+[Hauke Steffen]{https://scholar.google.com/citations?user=9wy4k8YAAAAJ}
+[Reemt Hinrichs]{https://scholar.google.com/citations?user=6vZ4IpoAAAAJ}
+[Jörn Ostermann](https://scholar.google.com/citations?user=WRTLuxcAAAAJ)
 
 ## Citation
 
