@@ -42,7 +42,7 @@ ABAMJ
     └── analyze_sentiment.py
 ```
 
-## Setup
+# Setup
 Make sure [conda](https://docs.conda.io/) is installed on your system and you have ~5GB of disk space available.
 
 ```shell
@@ -52,7 +52,7 @@ conda env create -f env_abamj.yml
 conda activate ABAMJ
 ```
 
-## Usage
+# Usage
 
 ### 1. Scraper
 ```shell
@@ -77,13 +77,14 @@ python3 abamj.py --classify
 ```shell
 python3 abamj.py --analyze
 ```
-## Google Scholar
-Link to the authors' Google Scholar profiles:
 
-[Reemt Hinrichs](https://scholar.google.com/citations?user=6vZ4IpoAAAAJ)  
-[Hauke Steffen](https://scholar.google.com/citations?user=9wy4k8YAAAAJ)  
-[Jörn Ostermann](https://scholar.google.com/citations?user=WRTLuxcAAAAJ)
-
-## Citation
-
-TODO
+# Citation
+If you use this project in your own research, please cite:
+```bibtex
+@article{Hinrichs25,
+   author = {Hinrichs, Reemt and Steffen, Hauke and Avetisyan, Hayastan and Broneske, David and Ostermann, Jörn},
+   title = {Towards Automatic Bias Analysis in Multimedia Journalism},
+   journal = {Discover Artificial Intelligence},
+   publisher = {Springer},
+   year = {2025}
+}
